@@ -4,16 +4,32 @@
     <meta charset="UTF-8">
     <title>JSTK Memory Game</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="js/game.js"></script>
+    <script src="js/controller.js"></script>
+    <script src="js/view.js"></script>
 </head>
 <body>
 <h1>Memory Game!</h1>
 
 
 
-<button onclick="controller.startGame()">START GAME</button>
+<button class="usage-button" onclick="controller.startGame()">START GAME</button>
 
-<script src="js/game.js"></script>
-<script src="js/controller.js"></script>
-<script src="js/view.js"></script>
+<button class="usage-button" type="button" id="btn1">
+    TESTOWY GUZIK
+</button>
+
+
+<h2>Settings:</h2>
+<p>Number of pieces: <output style="font-size: 20px; padding-left: 10px" id="slidernumberofpiecesoutput">4</output></p>
+<div class="slidercontainer">
+    <input type="range" min="2" max="20" value="4" class="slider" id="slidernumberofpieces" onchange="updateSliderPiece(this.value)">
+</div>
+<p>Displaying time: <output style="font-size: 20px; padding-left: 10px" id="slidertimeoutput">5</output> [s]</p>
+<div class="slidercontainer">
+    <input type="range" min="1" max="10" value="5" class="slider" id="slidertime" step="0.01" onchange="updateSliderTime(this.value)">
+
+</div>
+
 </body>
 </html>

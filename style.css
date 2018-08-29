@@ -1,1 +1,77 @@
+.slidecontainer {
+    width: 20vw;
+    height: 3vh;
+}
 
+.slider {
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    width: 20vw; /* Full-width */
+    height: 1vh; /* Specified height */
+    background: #d3d3d3; /* Grey background */
+    outline: none; /* Remove outline */
+    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+}
+
+.slider:hover {
+    opacity: 1; /* Fully shown on mouse-over */
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 2vh; /* Set a specific slider handle width */
+    height: 2vh; /* Slider handle height */
+    background: #ce0060;
+    cursor: pointer; /* Cursor on hover */
+}
+
+h2 {
+    /*font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;*/
+    font-size: 30px;
+    letter-spacing: 0.4px;
+    word-spacing: 0.8px;
+    color: #92003E;
+    font-weight: 900;
+    text-decoration: none;
+    font-style: normal;
+    text-transform: none;
+}
+
+
+p {
+    /*font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;*/
+    font-size: 20px;
+    letter-spacing: 0.4px;
+    word-spacing: 0.8px;
+    color: #AF008A;
+    font-weight: 700;
+    text-decoration: none;
+    font-style: normal;
+    text-transform: none;
+}
+
+.usage-button {
+    padding: 20px 40px;
+    border-radius: 10px;
+    border: 0;
+    background: #e31a59;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: 0.4s all;
+}
+
+.usage-button:hover {
+    padding: 20px 40px;
+    border-radius: 10px;
+    border: 0;
+    background: #e31a59;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: 0.4s all;
+    box-shadow: 0px 2px 10px #e300ce;
+}
