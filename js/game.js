@@ -26,3 +26,10 @@ var game = (function () {
         'getPieces': getPieces
     }
 })();
+
+/*
+losowanie liczby z zadanego przedzialu
+const min = 1;
+const max = 8;
+const result =  Math.floor(Math.random() * (max-min+1) + min);
+ */

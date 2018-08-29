@@ -1,9 +1,11 @@
 var view = (function () {
     var getInitialNumberOfPieces = function () {
-        //donm
+        var x1 = "1";
     };
 
     return {
         'getInitialNumberOfPieces': getInitialNumberOfPieces
     }
 })();
+
+

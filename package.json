@@ -4,18 +4,19 @@
   "description": "This is Memory Game in Java Script!",
   "main": "index.js",
   "scripts": {
-    "start": "http-server start",
+    "start": "npm run open",
+    "open": "concurrently \"http-server -a localhost -p 8080\" \"start http://localhost:8080\"",
     "test": "karma start karma.conf.js"
   },
   "author": "Sroka",
   "license": "ISC",
   "devDependencies": {
+    "concurrently": "^4.0.1",
+    "http-server": "^0.11.1",
     "jasmine-core": "^3.2.1",
     "karma": "^3.0.0",
     "karma-chrome-launcher": "^2.2.0",
     "karma-jasmine": "^1.1.2"
   },
-  "dependencies": {
-    "http-server": "^0.11.1"
-  }
+  "dependencies": {}
 }

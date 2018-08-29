@@ -13,9 +13,13 @@ module.exports = function(config) {
     frameworks: ['jasmine'],
 
 
-      // list of files / patterns to load in the browser
+      "scripts": {
+          "start": "http-server start",
+          "test": "karma start karma.conf.js"
+      },
+
       files: [
-          'js/*js',
+          'js/*.js',
           'test/*test.js'
       ],
 
