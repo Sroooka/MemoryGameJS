@@ -1,0 +1,21 @@
+{
+  "name": "memorygamejs",
+  "version": "1.0.0",
+  "description": "This is Memory Game in Java Script!",
+  "main": "index.js",
+  "scripts": {
+    "start": "http-server start",
+    "test": "karma start karma.conf.js"
+  },
+  "author": "Sroka",
+  "license": "ISC",
+  "devDependencies": {
+    "jasmine-core": "^3.2.1",
+    "karma": "^3.0.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-jasmine": "^1.1.2"
+  },
+  "dependencies": {
+    "http-server": "^0.11.1"
+  }
+}
