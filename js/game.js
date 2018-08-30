@@ -3,18 +3,33 @@ var game = (function () {
         maxNumberOfPieces = 70;
     var
         initialNumberOfPieces = 4,
+        initialBadShots = 0,
         currentNumberOfPieces,
+        currentBadShots = 0,
+        badShots = 0;
         allPieces = [],
         piecesToGuess = []
         amountOfPiecesToGuess = 0,
+        allShots = 0,
         level = 1,
 
         startGame = function (config) {
-            if (config && config.numberOfPieces) {
+            if (config && config.numberOfPieces && (config.badShots>=0)) {
                 currentNumberOfPieces = config.numberOfPieces;
+                currentBadShots = config.badShots;
+                console.log("number of pieces: " + currentNumberOfPieces);
+                console.log("bad shots: " + currentBadShots);
             } else {
                 currentNumberOfPieces = initialNumberOfPieces;
+                currentBadShots = initialBadShots;
+                console.log("default game.startgame constructor");
             }
+            badShots = 0;
+            allPieces = [];
+            piecesToGuess = [];
+            amountOfPiecesToGuess = 0;
+            allShots = 0;
+            level = 1;
         },
 
         getPieces = function () {
@@ -32,11 +47,15 @@ var game = (function () {
         getPiecesToGuess = function () {
             var i,
                 originalPiece,
+                shuffledPieces = [],
                 piece = {id:-1, highlight:true, toGuess:true};
-            allPieces = shuffle(allPieces);
+            for(i=0;i<allPieces.length;i++){
+                shuffledPieces.push(allPieces[i]);
+            }
+            shuffledPieces = shuffle(shuffledPieces);
             countAmountOfPiecesToGuess();
             for(i=0; i < amountOfPiecesToGuess; i++) {
-                originalPiece = allPieces[i];
+                originalPiece = shuffledPieces[i];
                 piece = {id:originalPiece.id, highlight:true, toGuess:true};
                 piecesToGuess.push(piece);
                 console.log(i);
@@ -44,6 +63,48 @@ var game = (function () {
             return piecesToGuess;
         },
 
+        gameButtonClicked = function (id) {
+                var i,
+                found = false;
+                allShots++;
+                for(i=0;i<piecesToGuess.length;i++){
+                    if(piecesToGuess[i].id == id){
+                        goodChoose(id);
+                        found = true;
+                        piecesToGuess.splice(i, 1);
+                    }
+                }
+                if(!found) {
+                    badChoose(id);
+                }
+                checkGameStatus();
+            },
+
+        goodChoose = function (id) {
+            console.log("GOOD CHOOSE");
+            controller.highlightGreenPiece(id);
+        },
+        badChoose = function (id) {
+            console.log("BAD CHOOSE");
+            badShots--;
+            if(badShots<0){
+                //end game
+                console.log("END GAME");
+            }else{
+                //continue game
+                console.log("CONTINUE GAME");
+            }
+        },
+        checkGameStatus = function () {
+            if(piecesToGuess.length<1){
+                //win
+                level++;
+                if(currentNumberOfPieces < maxNumberOfPieces){
+                    currentNumberOfPieces++;
+                }
+                controller.gameWonNextLevel(level);
+            }
+        },
         levelUp = function () {
             level++;
             currentNumberOfPieces++;
@@ -58,7 +119,8 @@ var game = (function () {
         'startGame': startGame,
         'getPieces': getPieces,
         'getPiecesToGuess': getPiecesToGuess,
-        'levelUp': levelUp
+        'levelUp': levelUp,
+        'gameButtonClicked': gameButtonClicked
     }
 })();
 

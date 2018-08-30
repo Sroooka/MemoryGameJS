@@ -1,7 +1,7 @@
 var
     sliderNumberOfElements = 4,
     sliderTimeOfDisplay = 5.0,
-    sliderBadShots = 5.0;
+    sliderBadShots = 0;
 
 function updateSliderPiece() {
     sliderNumberOfElements = parseInt(document.getElementById("slidernumberofpieces").value ,10);
@@ -28,6 +28,9 @@ var view = (function () {
     getInitialNumberOfPieces = function () {
         return sliderNumberOfElements;
     },
+        getInitialBadShots = function () {
+        return sliderBadShots;
+    },
 
     getDisplayTime = function () {
         return parseInt(sliderTimeOfDisplay * 1000);
@@ -37,7 +40,6 @@ var view = (function () {
         console.log("Pieces to show: " + receivedPieces.length);
         var i,
             buttonId,
-            pieceToDraw,
             pieceButton,
             elementContainer = document.getElementById("gamebuttons");
         while (elementContainer.hasChildNodes()) {
@@ -48,10 +50,12 @@ var view = (function () {
             pieceButton.className = "game-button";
             buttonId = "btn" + receivedPieces[i].id;
             pieceButton.id = buttonId;
-            elementContainer = document.getElementById("gamebuttons");
+            pieceButton.setAttribute("onclick", "controller.pieceClicked(this.id)");
             elementContainer.appendChild(pieceButton);
         }
     },
+
+
 
     highlightPieces = function (receivedPieces) {
         console.log("Pieces to show: " + receivedPieces.length);
@@ -64,6 +68,36 @@ var view = (function () {
             buttonIdToFind = "btn" + receivedPiece.id;
             pieceButton = document.getElementById(buttonIdToFind).style.background='#1B20FF';
         }
+    },
+
+    highlightGreenPiece = function (id) {
+        console.log("received id to light up green: " + id);
+        var buttonIdToFind;
+
+        buttonIdToFind = "btn" + id;
+        document.getElementById(buttonIdToFind).style.background='#77ff4d';
+
+    },
+
+    gameWonNextLevel = function (receivedPieces, level) {
+        console.log("Next level: " + level);
+        var i,
+            foundButton,
+            buttonIdToFind;
+        document.getElementById('playerlevel').innerHTML = level;
+        for(i=0; i<receivedPieces.length; i++){
+            foundButton = receivedPieces[i];
+            buttonIdToFind = "btn" + foundButton.id;
+            document.getElementById(buttonIdToFind).style.background='#ecff00';
+            //document.getElementById(buttonIdToFind).innerText = "WIN";
+            document.getElementById(buttonIdToFind).className = "game-button";
+        }
+
+    },
+
+    flow = function (message) {
+        document.getElementById("userinfoflow").innerText = message;
+
     };
 
     testFunction = function() {
@@ -76,6 +110,10 @@ var view = (function () {
         'showPieces': showPieces,
         'testFunction': testFunction,
         'highlightPieces': highlightPieces,
-        'getDisplayTime': getDisplayTime
+        'getDisplayTime': getDisplayTime,
+        'getInitialBadShots': getInitialBadShots,
+        'highlightGreenPiece': highlightGreenPiece,
+        'gameWonNextLevel': gameWonNextLevel,
+        'flow': flow
     }
 })();
