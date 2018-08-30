@@ -53,6 +53,7 @@ var game = (function () {
                 shuffledPieces.push(allPieces[i]);
             }
             shuffledPieces = shuffle(shuffledPieces);
+            piecesToGuess = [];
             countAmountOfPiecesToGuess();
             for(i=0; i < amountOfPiecesToGuess; i++) {
                 originalPiece = shuffledPieces[i];
@@ -86,23 +87,28 @@ var game = (function () {
         },
         badChoose = function (id) {
             console.log("BAD CHOOSE");
-            badShots--;
-            if(badShots<0){
-                //end game
-                console.log("END GAME");
-            }else{
-                //continue game
-                console.log("CONTINUE GAME");
-            }
+            badShots++;
+            controller.highlightRedPiece(id);
         },
         checkGameStatus = function () {
-            if(piecesToGuess.length<1){
+            var shotsLeft;
+            if(piecesToGuess.length<1) {
                 //win
                 level++;
-                if(currentNumberOfPieces < maxNumberOfPieces){
+                if (currentNumberOfPieces < maxNumberOfPieces) {
                     currentNumberOfPieces++;
                 }
                 controller.gameWonNextLevel(level);
+            } else {
+                if(badShots > currentBadShots){
+                    //end game
+                    console.log("END GAME");
+                }else{
+                    //continue game
+                    console.log("CONTINUE GAME");
+                    shotsLeft = currentBadShots - badShots;
+                    controller.continueGame(level, shotsLeft);
+                }
             }
         },
         levelUp = function () {

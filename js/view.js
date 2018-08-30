@@ -79,6 +79,14 @@ var view = (function () {
 
     },
 
+    highlightRedPiece = function (id) {
+        console.log("received id to light up red: " + id);
+        var buttonIdToFind;
+        buttonIdToFind = "btn" + id;
+        document.getElementById(buttonIdToFind).style.background='#ff412c';
+
+    },
+
     gameWonNextLevel = function (receivedPieces, level) {
         console.log("Next level: " + level);
         var i,
@@ -94,7 +102,25 @@ var view = (function () {
         }
 
     },
+    gameContinue = function (receivedPieces, level) {
+        console.log("Next level: " + level);
+        var i,
+            foundButton,
+            buttonIdToFind;
+        document.getElementById('playerlevel').innerHTML = level;
+        for(i=0; i<receivedPieces.length; i++){
+            foundButton = receivedPieces[i];
+            buttonIdToFind = "btn" + foundButton.id;
+            document.getElementById(buttonIdToFind).style.background='#ce3b25';
+            //document.getElementById(buttonIdToFind).innerText = "WIN";
+            document.getElementById(buttonIdToFind).className = "game-button";
+        }
 
+    },
+    setShotsLeft = function (shotsLeft) {
+            document.getElementById("shotsleft").innerText = shotsLeft;
+
+    },
     flow = function (message) {
         document.getElementById("userinfoflow").innerText = message;
 
@@ -114,6 +140,9 @@ var view = (function () {
         'getInitialBadShots': getInitialBadShots,
         'highlightGreenPiece': highlightGreenPiece,
         'gameWonNextLevel': gameWonNextLevel,
-        'flow': flow
+        'flow': flow,
+        'highlightRedPiece': highlightRedPiece,
+        'setShotsLeft': setShotsLeft,
+        'gameContinue': gameContinue
     }
 })();
