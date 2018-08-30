@@ -1,5 +1,7 @@
 var controller = function () {
-    var startGame = function () {
+    var pieces,
+        displayTime,
+        startGame = function () {
         document.addEventListener("DOMContentLoaded", function () {
             //TODO download elements from view
         });
@@ -9,7 +11,14 @@ var controller = function () {
             numberOfPieces: initialNumberOfPieces
         });
 
-        view.showPieces(game.getPieces());
+        displayTime = view.getDisplayTime();
+        pieces = game.getPieces();
+
+        view.showPieces(pieces);
+
+        setTimeout(function(){ view.highlightPieces(game.getPiecesToGuess()); }, 1000);
+        setTimeout(function(){ view.showPieces(pieces); }, displayTime + 1000);
+
 
     };
 
