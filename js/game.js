@@ -1,5 +1,6 @@
 var game = (function () {
-
+    const
+        maxNumberOfPieces = 70;
     var
         initialNumberOfPieces = 4,
         currentNumberOfPieces,
@@ -13,12 +14,13 @@ var game = (function () {
 
         getPieces = function () {
             var i,
-                pieces = [];
+                pieces = [],
+                piece = {id:-1, highlight:false, toGuess:false};
 
             for(i=0; i < currentNumberOfPieces; i++) {
-                pieces.push({});
+                piece = {id:i, highlight:false, toGuess:false};
+                pieces.push(piece);
             }
-            //pieces[0].toGuess = true;
             return pieces;
         };
 

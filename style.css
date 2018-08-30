@@ -1,22 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
 .slidecontainer {
-    width: 20vw;
+    width: 90%;
     height: 3vh;
 }
 
 .slider {
     -webkit-appearance: none;  /* Override default CSS styles */
     appearance: none;
-    width: 20vw; /* Full-width */
+    width: 90%; /* Full-width */
     height: 1vh; /* Specified height */
     background: #d3d3d3; /* Grey background */
     outline: none; /* Remove outline */
-    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+    opacity: 1; /* Set transparency (for mouse-over effects on hover) */
     -webkit-transition: .2s; /* 0.2 seconds transition on hover */
     transition: opacity .2s;
+    margin-top: 5px;
 }
 
 .slider:hover {
-    opacity: 1; /* Fully shown on mouse-over */
+    opacity: 0.7; /* Fully shown on mouse-over */
 }
 
 .slider::-webkit-slider-thumb {
@@ -24,8 +30,21 @@
     appearance: none;
     width: 2vh; /* Set a specific slider handle width */
     height: 2vh; /* Slider handle height */
-    background: #ce0060;
+    background: #f200e3;
     cursor: pointer; /* Cursor on hover */
+}
+
+h1 {
+    /*font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;*/
+    font-size: 30px;
+    letter-spacing: 0.4px;
+    word-spacing: 0.8px;
+    color: #efefef;
+    font-weight: 900;
+    text-decoration: none;
+    font-style: normal;
+    text-transform: none;
+    margin-top: 20px;
 }
 
 h2 {
@@ -33,11 +52,12 @@ h2 {
     font-size: 30px;
     letter-spacing: 0.4px;
     word-spacing: 0.8px;
-    color: #92003E;
+    color: #ffffff;
     font-weight: 900;
     text-decoration: none;
     font-style: normal;
     text-transform: none;
+    margin-top: 15px;
 }
 
 
@@ -46,18 +66,20 @@ p {
     font-size: 20px;
     letter-spacing: 0.4px;
     word-spacing: 0.8px;
-    color: #AF008A;
+    color: #dedede;
     font-weight: 700;
     text-decoration: none;
     font-style: normal;
     text-transform: none;
+    margin-top: 10px;
 }
 
 .usage-button {
     padding: 20px 40px;
-    border-radius: 10px;
+    border-radius: 15px;
+    width: 45%;
     border: 0;
-    background: #e31a59;
+    background: #983cbf;
     color: #fff;
     text-transform: uppercase;
     font-weight: bold;
@@ -66,12 +88,51 @@ p {
 
 .usage-button:hover {
     padding: 20px 40px;
-    border-radius: 10px;
+    border-radius: 15px;
     border: 0;
-    background: #e31a59;
+    background: #983cbf;
     color: #fff;
     text-transform: uppercase;
     font-weight: bold;
     transition: 0.4s all;
-    box-shadow: 0px 2px 10px #e300ce;
+    box-shadow: 0px 0px 15px #ff00ac;
+}
+
+.column {
+    float: left;
+}
+
+#leftColumn {
+    width: 25%;
+    background: rgb(66, 0, 80);
+}
+
+#rightColumn {
+    wrap-option: wrap;
+    width: 75%;
+    background: rgb(0, 13, 53);
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.game-button {
+    margin: 5px;
+    padding: 46px 49px;
+    border-radius: 0px;
+    border: 0;
+    background: #7c7c7c;
+    transition: 0.2s all;
+}
+
+.game-button:hover {
+    padding: 46px 49px;
+    border-radius: 0px;
+    border: 0;
+    background: #7c7c7c;
+    transition: 0.2s all;
+    box-shadow: 0px 0px 30px #b800ff;
 }
