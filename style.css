@@ -136,3 +136,54 @@ p {
     transition: 0.2s all;
     box-shadow: 0px 0px 30px #b800ff;
 }
+
+#playerlevel {
+    color: #eebbff;
+    text-shadow: 1px 1px 5px rgba(255, 255, 255, 1);
+}
+
+#userinfoflow {
+    font-size: 30px;
+    color: #eebbff;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 1);
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.onoffswitch {
+    position: relative; width: 50px;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+.onoffswitch-checkbox {
+    display: none;
+}
+.onoffswitch-label {
+    display: block; overflow: hidden; cursor: pointer;
+    height: 17px; padding: 0; line-height: 17px;
+    border: 2px solid #E3E3E3; border-radius: 17px;
+    background-color: #FFFFFF;
+    transition: background-color 0.3s ease-in;
+}
+.onoffswitch-label:before {
+    content: "";
+    display: block; width: 17px; margin: 0px;
+    background: #FFFFFF;
+    position: absolute; top: 0; bottom: 0;
+    right: 21px;
+    border: 2px solid #E3E3E3; border-radius: 17px;
+    transition: all 0.3s ease-in 0s;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label {
+    background-color: #49E845;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label, .onoffswitch-checkbox:checked + .onoffswitch-label:before {
+    border-color: #49E845;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label:before {
+    right: 0px;
+}

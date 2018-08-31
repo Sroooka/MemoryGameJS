@@ -134,7 +134,17 @@ var view = (function () {
     },
     setShotsLeft = function (shotsLeft) {
         document.getElementById("shotsleft").innerText = shotsLeft;
-
+        if(shotsLeft<2){
+            document.getElementById("shotsleft").style.color = "#ff8194";
+        } else if(shotsLeft<4){
+            document.getElementById("shotsleft").style.color = "#ffa96a";
+        }else if(shotsLeft<6){
+            document.getElementById("shotsleft").style.color = "#ffe673";
+        }else if(shotsLeft<8){
+            document.getElementById("shotsleft").style.color = "#d4ff6d";
+        }else {
+            document.getElementById("shotsleft").style.color = "#6dff98";
+        }
     },
     setShotsAccuracy = function (shotsAccuracy) {
         document.getElementById("shotaccuracy").innerText = shotsAccuracy;

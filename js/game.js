@@ -12,6 +12,7 @@ var game = (function () {
         amountOfPiecesToGuess = 0,
         allShots = 0,
         level = 1,
+        cheatMode = false,
 
         startGame = function (config) {
             if (config && config.numberOfPieces && (config.badShots>=0)) {
@@ -30,6 +31,7 @@ var game = (function () {
             amountOfPiecesToGuess = 0;
             allShots = 0;
             level = 1;
+            cheatMode = false;
         },
 
         getPieces = function () {
@@ -109,22 +111,36 @@ var game = (function () {
                 }
             } else {
                 console.log("Choosed Wrong!");
-                if(badShots >= currentBadShots) {
-                    //LOST
-                    console.log("END GAME");
-                    controller.endGame(level);
-                } else {
-                    //continue game, update shots left and show board
-                    console.log("CONTINUE GAME, SHOW RED BOARD AND THEN SHOW NEW BOARD");
-                    shotsLeft = currentBadShots - badShots;
-                    shotsAccuracy = (((allShots - badShots)/allShots) * 100).toFixed(2);; //in percent
-                    controller.continueGame(level, shotsLeft, shotsAccuracy);
+                if(!cheatMode){
+                    if(badShots >= currentBadShots) {
+                        //LOST
+                        console.log("END GAME");
+                        controller.endGame(level);
+                    } else {
+                        //continue game, update shots left and show board
+                        console.log("CONTINUE GAME, SHOW RED BOARD AND THEN SHOW NEW BOARD");
+                        shotsLeft = currentBadShots - badShots;
+                        shotsAccuracy = (((allShots - badShots)/allShots) * 100).toFixed(2);; //in percent
+                        controller.continueGame(level, shotsLeft, shotsAccuracy);
+                    }
                 }
+
             }
         },
         levelUp = function () {
             level++;
             currentNumberOfPieces++;
+        },
+
+        setCheatMode = function (checkbox) {
+            if(checkbox.checked){
+                cheatMode = true;
+            }else{
+                cheatMode = false;
+            }
+
+            console.log("CHEAT MODE: " + checkbox.checked);
+            console.log("CHEAT MODE BOOL: " + cheatMode);
         },
 
         countAmountOfPiecesToGuess = function () {
@@ -138,7 +154,8 @@ var game = (function () {
         'getPiecesToGuess': getPiecesToGuess,
         'levelUp': levelUp,
         'gameButtonClicked': gameButtonClicked,
-        'checkGameStatus': checkGameStatus
+        'checkGameStatus': checkGameStatus,
+        'setCheatMode': setCheatMode
     }
 })();
 
