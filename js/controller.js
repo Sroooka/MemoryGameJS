@@ -16,12 +16,12 @@ var controller = function () {
             view.setShotsLeft(initialBadShots);
             view.setLevel(1);
             view.setShotsAccuracy(100);
-            game.setCheatMode(view.getCheatMode());
+
             game.startGame({
                 numberOfPieces: initialNumberOfPieces,
                 badShots: initialBadShots
             });
-
+            game.setCheatMode(view.getCheatMode());
             displayTime = view.getDisplayTime();
 
 
@@ -94,7 +94,6 @@ var controller = function () {
         setTimeout(function(){  view.flow("Press [Start]\nto create new game!"); canShotPieces = true; }, 4000);
     },
     pieceClicked = function (id) {
-        console.log("Button clicked! received id: " + id);
         if(!canShotPieces){
             alert("You can't choose pieces when highlighting!");
         }
@@ -103,39 +102,30 @@ var controller = function () {
             var extractedId,
             gameInfo;
             extractedId = parseInt(id.substring(3));    //remove 'btn' from ID
-            console.log("Extracted ID number received: " + extractedId);
             gameInfo = game.gameButtonClicked(extractedId);
             if(gameInfo.highlight==="red"){
-                console.log("Highlight red piece!");
-
                 highlightRedPiece(extractedId);
             }
             if(gameInfo.highlight==="green"){
-                console.log("Highlight green piece!");
                 highlightGreenPiece(extractedId);
             }
             if(gameInfo.gameStatus==="win"){
-                console.log("Controller gamestatus win!");
                 gameWonNextLevel(gameInfo.level, gameInfo.shotAccuracy);
                 setAmountToGuess(gameInfo.amountToGuess);
             } else if(gameInfo.gameStatus==="end"){
-                console.log("Controller gamestatus end!");
                 endGame(gameInfo.level);
             } else if(gameInfo.gameStatus==="continue"){
-                console.log("Controller gamestatus continue!");
                 continueGame(gameInfo.level, gameInfo.shotsLeft, gameInfo.shotAccuracy);
             } else{
                 if(gameInfo.amountToGuess){
                     setAmountToGuess(gameInfo.amountToGuess);
                 }
-
             }
         }
     },
 
     showBoard = function () {
         view.flow("");
-
         pieces = game.getPieces();
         piecesToGuess = game.getPiecesToGuess();
         setAmountToGuess(piecesToGuess.length)
