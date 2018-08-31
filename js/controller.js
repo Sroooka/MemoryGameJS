@@ -5,24 +5,30 @@ var controller = function () {
         gameStarted = false,
         initialNumberOfPieces,
         initialBadShots
-        canShotPieces = false,
+        canShotPieces = true,
 
     startGame = function () {
-        view.flow("");
-        gameStarted = true;
-        initialNumberOfPieces = view.getInitialNumberOfPieces();
-        initialBadShots = view.getInitialBadShots();
-        view.setShotsLeft(initialBadShots);
-        view.setShotsLeft(initialBadShots);
-        game.startGame({
-            numberOfPieces: initialNumberOfPieces,
-            badShots: initialBadShots
-        });
+        if(canShotPieces){
+            view.flow("");
+            gameStarted = true;
+            initialNumberOfPieces = view.getInitialNumberOfPieces();
+            initialBadShots = view.getInitialBadShots();
+            view.setShotsLeft(initialBadShots);
+            view.setLevel(1);
+            view.setShotsAccuracy(100);
+            game.startGame({
+                numberOfPieces: initialNumberOfPieces,
+                badShots: initialBadShots
+            });
 
-        displayTime = view.getDisplayTime();
+            displayTime = view.getDisplayTime();
 
 
-        showBoard();
+            showBoard();
+        } else{
+            alert("Wait until game end!");
+        }
+
     },
 
     highlightPieces = function () {
@@ -76,7 +82,7 @@ var controller = function () {
         setTimeout(function(){  view.endGame1(pieces, level, "#3c3c3c"); }, 4000);
         setTimeout(function(){  view.endGame1(pieces, level, "#282828"); }, 4500);
         setTimeout(function(){  view.endGame1(pieces, level, "#000000"); }, 5000);
-        setTimeout(function(){  view.flow("Press [Start]\nto create new game!"); }, 5000);
+        setTimeout(function(){  view.flow("Press [Start]\nto create new game!"); canShotPieces = true; }, 5000);
     },
     pieceClicked = function (id) {
         console.log("Button clicked! received id: " + id);

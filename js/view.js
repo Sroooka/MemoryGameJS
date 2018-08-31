@@ -132,6 +132,9 @@ var view = (function () {
         }
 
     },
+    setLevel = function(level){
+        document.getElementById('playerlevel').innerHTML = level;
+    },
     setShotsLeft = function (shotsLeft) {
         document.getElementById("shotsleft").innerText = shotsLeft;
         if(shotsLeft<2){
@@ -174,6 +177,7 @@ var view = (function () {
         'setShotsLeft': setShotsLeft,
         'gameContinueAfterBadShot': gameContinueAfterBadShot,
         'endGame1': endGame1,
-        'setShotsAccuracy': setShotsAccuracy
+        'setShotsAccuracy': setShotsAccuracy,
+        'setLevel': setLevel
     }
 })();
