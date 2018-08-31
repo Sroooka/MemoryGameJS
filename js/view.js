@@ -55,7 +55,9 @@ var view = (function () {
         }
     },
 
-
+    setAmountToGuess = function(amount){
+        document.getElementById('piecesleft').innerHTML = amount;
+    },
 
     highlightPieces = function (receivedPieces) {
         console.log("Pieces to show: " + receivedPieces.length);
@@ -178,6 +180,7 @@ var view = (function () {
         'gameContinueAfterBadShot': gameContinueAfterBadShot,
         'endGame1': endGame1,
         'setShotsAccuracy': setShotsAccuracy,
-        'setLevel': setLevel
+        'setLevel': setLevel,
+        'setAmountToGuess': setAmountToGuess
     }
 })();

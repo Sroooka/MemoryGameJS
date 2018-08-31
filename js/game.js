@@ -63,6 +63,7 @@ var game = (function () {
                 piecesToGuess.push(piece);
                 console.log(i);
             }
+            controller.setAmountToGuess(piecesToGuess.length);
             return piecesToGuess;
         },
 
@@ -75,6 +76,7 @@ var game = (function () {
                         goodChoose(id);
                         found = true;
                         piecesToGuess.splice(i, 1);
+                        controller.setAmountToGuess(piecesToGuess.length);
                     }
                 }
                 if(!found) {

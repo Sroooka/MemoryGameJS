@@ -31,11 +31,17 @@ var controller = function () {
 
     },
 
+    setAmountToGuess = function(amount){
+        view.setAmountToGuess(amount);
+    },
+
     highlightPieces = function () {
             if(!gameStarted){
                 alert("You must be in game to Highlight pieces!");
             }
-            else
+            else if(!canShotPieces){
+                alert("Wait until game highlight previous pieces!");
+            } else
             {
                 showBoard();
             }
@@ -53,7 +59,8 @@ var controller = function () {
     },
 
     gameWonNextLevel = function (level, shotsAccuracy) {
-        view.gameWonNextLevel(pieces, level);
+
+        setTimeout(function(){  view.gameWonNextLevel(pieces, level); }, 1000);
         view.flow("YOU WON!\nLevel up!");
         view.setShotsAccuracy(shotsAccuracy);
         setTimeout(function(){  showBoard(); }, 2000);
@@ -122,6 +129,7 @@ var controller = function () {
         'gameWonNextLevel': gameWonNextLevel,
         'continueGame': continueGame,
         'endGame': endGame,
-        'setCheatMode': setCheatMode
+        'setCheatMode': setCheatMode,
+        'setAmountToGuess': setAmountToGuess
     }
 }();
