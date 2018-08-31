@@ -63,7 +63,7 @@ var game = (function () {
                 piecesToGuess.push(piece);
                 console.log(i);
             }
-            controller.setAmountToGuess(piecesToGuess.length);
+            //controller.setAmountToGuess(piecesToGuess.length);
             return piecesToGuess;
         },
 

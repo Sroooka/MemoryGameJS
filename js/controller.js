@@ -112,6 +112,7 @@ var controller = function () {
 
         pieces = game.getPieces();
         piecesToGuess = game.getPiecesToGuess();
+        setAmountToGuess(piecesToGuess.length)
         view.showPieces(pieces);
 
         canShotPieces = false;
