@@ -79,17 +79,17 @@ var controller = function () {
         gameStarted = false;
         view.setShotsLeft(0);
         view.flow("You lost!\nYour level: " + level);
-        setTimeout(function(){  view.endGame1(pieces, level, "#c8c8c8"); }, 500);
-        setTimeout(function(){  view.endGame1(pieces, level, "#b4b4b4"); }, 1000);
-        setTimeout(function(){  view.endGame1(pieces, level, "#a0a0a0"); }, 1500);
-        setTimeout(function(){  view.endGame1(pieces, level, "#8c8c8c"); }, 2000);
-        setTimeout(function(){  view.endGame1(pieces, level, "#787878"); }, 2500);
+        setTimeout(function(){  view.endGame1(pieces, level, "#ff1900"); }, 1000);
+        setTimeout(function(){  view.endGame1(pieces, level, "#b4b4b4"); }, 2200);
+        setTimeout(function(){  view.endGame1(pieces, level, "#a0a0a0"); }, 2400);
+        setTimeout(function(){  view.endGame1(pieces, level, "#8c8c8c"); }, 2600);
+        setTimeout(function(){  view.endGame1(pieces, level, "#787878"); }, 2800);
         setTimeout(function(){  view.endGame1(pieces, level, "#646464"); }, 3000);
-        setTimeout(function(){  view.endGame1(pieces, level, "#505050"); }, 3500);
-        setTimeout(function(){  view.endGame1(pieces, level, "#3c3c3c"); }, 4000);
-        setTimeout(function(){  view.endGame1(pieces, level, "#282828"); }, 4500);
-        setTimeout(function(){  view.endGame1(pieces, level, "#000000"); }, 5000);
-        setTimeout(function(){  view.flow("Press [Start]\nto create new game!"); canShotPieces = true; }, 5000);
+        setTimeout(function(){  view.endGame1(pieces, level, "#505050"); }, 3200);
+        setTimeout(function(){  view.endGame1(pieces, level, "#3c3c3c"); }, 3400);
+        setTimeout(function(){  view.endGame1(pieces, level, "#282828"); }, 3600);
+        setTimeout(function(){  view.endGame1(pieces, level, "#000000"); }, 3800);
+        setTimeout(function(){  view.flow("Press [Start]\nto create new game!"); canShotPieces = true; }, 3800);
     },
     pieceClicked = function (id) {
         console.log("Button clicked! received id: " + id);

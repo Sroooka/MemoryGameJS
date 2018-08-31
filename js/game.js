@@ -113,20 +113,21 @@ var game = (function () {
                 }
             } else {
                 console.log("Choosed Wrong!");
-                if(!cheatMode){
-                    if(badShots >= currentBadShots) {
-                        //LOST
-                        console.log("END GAME");
-                        controller.endGame(level);
-                    } else {
-                        //continue game, update shots left and show board
-                        console.log("CONTINUE GAME, SHOW RED BOARD AND THEN SHOW NEW BOARD");
-                        shotsLeft = currentBadShots - badShots;
-                        shotsAccuracy = (((allShots - badShots)/allShots) * 100).toFixed(2);; //in percent
-                        controller.continueGame(level, shotsLeft, shotsAccuracy);
-                    }
-                }
 
+                if(badShots >= currentBadShots) {
+                    //LOST
+                    console.log("END GAME");
+                    if(!cheatMode){
+                        controller.endGame(level);
+                    }
+
+                } else {
+                    //continue game, update shots left and show board
+                    console.log("CONTINUE GAME, SHOW RED BOARD AND THEN SHOW NEW BOARD");
+                    shotsLeft = currentBadShots - badShots;
+                    shotsAccuracy = (((allShots - badShots)/allShots) * 100).toFixed(2);; //in percent
+                    controller.continueGame(level, shotsLeft, shotsAccuracy);
+                }
             }
         },
         levelUp = function () {
