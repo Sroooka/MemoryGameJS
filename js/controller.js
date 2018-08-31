@@ -79,17 +79,18 @@ var controller = function () {
         gameStarted = false;
         view.setShotsLeft(0);
         view.flow("You lost!\nYour level: " + level);
-        setTimeout(function(){  view.endGame1(pieces, level, "#ff1900"); }, 1000);
-        setTimeout(function(){  view.endGame1(pieces, level, "#b4b4b4"); }, 2200);
-        setTimeout(function(){  view.endGame1(pieces, level, "#a0a0a0"); }, 2400);
-        setTimeout(function(){  view.endGame1(pieces, level, "#8c8c8c"); }, 2600);
-        setTimeout(function(){  view.endGame1(pieces, level, "#787878"); }, 2800);
-        setTimeout(function(){  view.endGame1(pieces, level, "#646464"); }, 3000);
-        setTimeout(function(){  view.endGame1(pieces, level, "#505050"); }, 3200);
-        setTimeout(function(){  view.endGame1(pieces, level, "#3c3c3c"); }, 3400);
-        setTimeout(function(){  view.endGame1(pieces, level, "#282828"); }, 3600);
-        setTimeout(function(){  view.endGame1(pieces, level, "#000000"); }, 3800);
-        setTimeout(function(){  view.flow("Press [Start]\nto create new game!"); canShotPieces = true; }, 3800);
+        setTimeout(function(){  view.endGame(pieces, level, "#ff1900"); }, 1000);
+        setTimeout(function(){  view.endGame(pieces, level, "#b4b4b4"); }, 2200);
+        setTimeout(function(){  view.endGame(pieces, level, "#a0a0a0"); }, 2400);
+        setTimeout(function(){  view.endGame(pieces, level, "#8c8c8c"); }, 2600);
+        setTimeout(function(){  view.endGame(pieces, level, "#787878"); }, 2800);
+        setTimeout(function(){  view.endGame(pieces, level, "#646464"); }, 3000);
+        setTimeout(function(){  view.endGame(pieces, level, "#505050"); }, 3200);
+        setTimeout(function(){  view.endGame(pieces, level, "#3c3c3c"); }, 3400);
+        setTimeout(function(){  view.endGame(pieces, level, "#282828"); }, 3600);
+        setTimeout(function(){  view.endGame(pieces, level, "#000000"); }, 3800);
+        setTimeout(function(){  view.showPieces([]); }, 4000);
+        setTimeout(function(){  view.flow("Press [Start]\nto create new game!"); canShotPieces = true; }, 4000);
     },
     pieceClicked = function (id) {
         console.log("Button clicked! received id: " + id);

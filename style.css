@@ -122,19 +122,19 @@ p {
 .game-button {
     margin: 5px;
     padding: 46px 49px;
-    border-radius: 0px;
+    border-radius: 1px;
     border: 0;
-    background: #7c7c7c;
+    background: rgba(174, 252, 255, 0.8);
     transition: 0.2s all;
 }
 
 .game-button:hover {
     padding: 46px 49px;
-    border-radius: 0px;
+    border-radius: 1px;
     border: 0;
-    background: #7c7c7c;
+    background: rgba(174, 252, 255, 0.9);
     transition: 0.2s all;
-    box-shadow: 0px 0px 30px #b800ff;
+    box-shadow: 2px 2px 20px #ff00a6;
 }
 
 #playerlevel {

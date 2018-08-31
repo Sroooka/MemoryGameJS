@@ -120,7 +120,7 @@ var view = (function () {
 
     },
 
-    endGame1 = function (receivedPieces, level, color) {
+    endGame = function (receivedPieces, level, color) {
         var i,
             foundButton,
             buttonIdToFind;
@@ -178,7 +178,7 @@ var view = (function () {
         'highlightRedPiece': highlightRedPiece,
         'setShotsLeft': setShotsLeft,
         'gameContinueAfterBadShot': gameContinueAfterBadShot,
-        'endGame1': endGame1,
+        'endGame': endGame,
         'setShotsAccuracy': setShotsAccuracy,
         'setLevel': setLevel,
         'setAmountToGuess': setAmountToGuess
