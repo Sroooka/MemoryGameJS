@@ -102,7 +102,7 @@ var view = (function () {
         }
 
     },
-    gameContinue = function (receivedPieces, level) {
+    gameContinueAfterBadShot = function (receivedPieces, level) {
         console.log("Next level: " + level);
         var i,
             foundButton,
@@ -117,8 +117,27 @@ var view = (function () {
         }
 
     },
+
+    endGame1 = function (receivedPieces, level, color) {
+        var i,
+            foundButton,
+            buttonIdToFind;
+        document.getElementById('playerlevel').innerHTML = level;
+        for(i=0; i<receivedPieces.length; i++){
+            foundButton = receivedPieces[i];
+            buttonIdToFind = "btn" + foundButton.id;
+            document.getElementById(buttonIdToFind).style.background=color;
+            //document.getElementById(buttonIdToFind).innerText = "WIN";
+            document.getElementById(buttonIdToFind).className = "game-button";
+        }
+
+    },
     setShotsLeft = function (shotsLeft) {
-            document.getElementById("shotsleft").innerText = shotsLeft;
+        document.getElementById("shotsleft").innerText = shotsLeft;
+
+    },
+    setShotsAccuracy = function (shotsAccuracy) {
+        document.getElementById("shotaccuracy").innerText = shotsAccuracy;
 
     },
     flow = function (message) {
@@ -143,6 +162,8 @@ var view = (function () {
         'flow': flow,
         'highlightRedPiece': highlightRedPiece,
         'setShotsLeft': setShotsLeft,
-        'gameContinue': gameContinue
+        'gameContinueAfterBadShot': gameContinueAfterBadShot,
+        'endGame1': endGame1,
+        'setShotsAccuracy': setShotsAccuracy
     }
 })();

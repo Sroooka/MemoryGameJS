@@ -78,36 +78,47 @@ var game = (function () {
                 if(!found) {
                     badChoose(id);
                 }
-                checkGameStatus();
+                checkGameStatus(found);
             },
 
         goodChoose = function (id) {
             console.log("GOOD CHOOSE");
             controller.highlightGreenPiece(id);
         },
+
         badChoose = function (id) {
             console.log("BAD CHOOSE");
             badShots++;
             controller.highlightRedPiece(id);
         },
-        checkGameStatus = function () {
-            var shotsLeft;
-            if(piecesToGuess.length<1) {
-                //win
-                level++;
-                if (currentNumberOfPieces < maxNumberOfPieces) {
-                    currentNumberOfPieces++;
+
+        checkGameStatus = function (choosedCorrect) {
+            var shotsLeft,
+            shotsAccuracy;
+            if(choosedCorrect){
+                console.log("Choosed Correct");
+                if(piecesToGuess.length<1) {
+                    console.log("WIN");
+                    //win
+                    level++;
+                    if (currentNumberOfPieces < maxNumberOfPieces) {
+                        currentNumberOfPieces++;
+                    }
+                    shotsAccuracy = (((allShots - badShots)/allShots) * 100).toFixed(2);; //in percent
+                    controller.gameWonNextLevel(level, shotsAccuracy);
                 }
-                controller.gameWonNextLevel(level);
             } else {
-                if(badShots > currentBadShots){
-                    //end game
+                console.log("Choosed Wrong!");
+                if(badShots >= currentBadShots) {
+                    //LOST
                     console.log("END GAME");
-                }else{
-                    //continue game
-                    console.log("CONTINUE GAME");
+                    controller.endGame(level);
+                } else {
+                    //continue game, update shots left and show board
+                    console.log("CONTINUE GAME, SHOW RED BOARD AND THEN SHOW NEW BOARD");
                     shotsLeft = currentBadShots - badShots;
-                    controller.continueGame(level, shotsLeft);
+                    shotsAccuracy = (((allShots - badShots)/allShots) * 100).toFixed(2);; //in percent
+                    controller.continueGame(level, shotsLeft, shotsAccuracy);
                 }
             }
         },
@@ -126,7 +137,8 @@ var game = (function () {
         'getPieces': getPieces,
         'getPiecesToGuess': getPiecesToGuess,
         'levelUp': levelUp,
-        'gameButtonClicked': gameButtonClicked
+        'gameButtonClicked': gameButtonClicked,
+        'checkGameStatus': checkGameStatus
     }
 })();
 

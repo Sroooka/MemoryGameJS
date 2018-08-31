@@ -41,17 +41,37 @@ var controller = function () {
         view.highlightRedPiece(id);
     },
 
-    gameWonNextLevel = function (level) {
+    gameWonNextLevel = function (level, shotsAccuracy) {
         view.gameWonNextLevel(pieces, level);
         view.flow("YOU WON! Level up!");
+        view.setShotsAccuracy(shotsAccuracy);
         setTimeout(function(){  showBoard(); }, 2000);
     },
 
-    continueGame = function (level, shotsLeft) {
-        view.gameContinue(pieces, level);
+    continueGame = function (level, shotsLeft, shotsAccuracy) {
+        canShotPieces = false;
         view.setShotsLeft(shotsLeft);
+        view.setShotsAccuracy(shotsAccuracy);
         view.flow("Bad shot! Continuing!");
-        //setTimeout(function(){  showBoard(); }, 2000);
+        setTimeout(function(){  view.gameContinueAfterBadShot(pieces, level); }, 1000);
+        setTimeout(function(){  showBoard(); }, 3000);
+    },
+    endGame = function (level) {
+        canShotPieces = false;
+        gameStarted = false;
+        view.setShotsLeft(0);
+        view.flow("You lost! Your level: " + level);
+        setTimeout(function(){  view.endGame1(pieces, level, "#c8c8c8"); }, 500);
+        setTimeout(function(){  view.endGame1(pieces, level, "#b4b4b4"); }, 1000);
+        setTimeout(function(){  view.endGame1(pieces, level, "#a0a0a0"); }, 1500);
+        setTimeout(function(){  view.endGame1(pieces, level, "#8c8c8c"); }, 2000);
+        setTimeout(function(){  view.endGame1(pieces, level, "#787878"); }, 2500);
+        setTimeout(function(){  view.endGame1(pieces, level, "#646464"); }, 3000);
+        setTimeout(function(){  view.endGame1(pieces, level, "#505050"); }, 3500);
+        setTimeout(function(){  view.endGame1(pieces, level, "#3c3c3c"); }, 4000);
+        setTimeout(function(){  view.endGame1(pieces, level, "#282828"); }, 4500);
+        setTimeout(function(){  view.endGame1(pieces, level, "#000000"); }, 5000);
+        setTimeout(function(){  view.flow("Press [Start] to create new game!"); }, 5000);
     },
     pieceClicked = function (id) {
         console.log("Button clicked! received id: " + id);
@@ -89,6 +109,7 @@ var controller = function () {
         'highlightGreenPiece': highlightGreenPiece,
         'highlightRedPiece': highlightRedPiece,
         'gameWonNextLevel': gameWonNextLevel,
-        'continueGame': continueGame
+        'continueGame': continueGame,
+        'endGame': endGame
     }
 }();
