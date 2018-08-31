@@ -16,6 +16,7 @@ var controller = function () {
             view.setShotsLeft(initialBadShots);
             view.setLevel(1);
             view.setShotsAccuracy(100);
+            game.setCheatMode(view.getCheatMode());
             game.startGame({
                 numberOfPieces: initialNumberOfPieces,
                 badShots: initialBadShots

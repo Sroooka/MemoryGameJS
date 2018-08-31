@@ -36,6 +36,9 @@ var view = (function () {
         return parseInt(sliderTimeOfDisplay * 1000);
         console.log("Showing time: " + sliderTimeOfDisplay);
     },
+    getCheatMode = function () {
+        return document.getElementById('myonoffswitch');
+    },
     showPieces = function (receivedPieces) {
         console.log("Pieces to show: " + receivedPieces.length);
         var i,
@@ -181,6 +184,7 @@ var view = (function () {
         'endGame': endGame,
         'setShotsAccuracy': setShotsAccuracy,
         'setLevel': setLevel,
-        'setAmountToGuess': setAmountToGuess
+        'setAmountToGuess': setAmountToGuess,
+        'getCheatMode': getCheatMode
     }
 })();

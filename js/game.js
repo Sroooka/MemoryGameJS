@@ -18,12 +18,9 @@ var game = (function () {
             if (config && config.numberOfPieces && (config.badShots>=0)) {
                 currentNumberOfPieces = config.numberOfPieces;
                 currentBadShots = config.badShots;
-                console.log("number of pieces: " + currentNumberOfPieces);
-                console.log("bad shots: " + currentBadShots);
             } else {
                 currentNumberOfPieces = initialNumberOfPieces;
                 currentBadShots = initialBadShots;
-                console.log("default game.startgame constructor");
             }
             badShots = 0;
             allPieces = [];
@@ -36,11 +33,11 @@ var game = (function () {
 
         getPieces = function () {
             var i,
-                piece = {id:-1, highlight:false, toGuess:false};
+                piece = {id:-1};
             allPieces = [];
             piecesToGuess = [];
             for(i=0; i < currentNumberOfPieces; i++) {
-                piece = {id:i, highlight:false, toGuess:false};
+                piece = {id:i};
                 allPieces.push(piece);
             }
             return allPieces;
@@ -50,7 +47,7 @@ var game = (function () {
             var i,
                 originalPiece,
                 shuffledPieces = [],
-                piece = {id:-1, highlight:true, toGuess:true};
+                piece = {id:-1};
             for(i=0;i<allPieces.length;i++){
                 shuffledPieces.push(allPieces[i]);
             }
@@ -59,7 +56,7 @@ var game = (function () {
             countAmountOfPiecesToGuess();
             for(i=0; i < amountOfPiecesToGuess; i++) {
                 originalPiece = shuffledPieces[i];
-                piece = {id:originalPiece.id, highlight:true, toGuess:true};
+                piece = {id:originalPiece.id};
                 piecesToGuess.push(piece);
                 console.log(i);
             }
@@ -85,20 +82,13 @@ var game = (function () {
                 return checkGameStatus(found, id, color);
             },
 
-
-
-
-
         checkGameStatus = function (choosedCorrect, id, color) {
             var shotsLeft = 0,
                 status = "nothing",
             shotsAccuracy = 0,
             gameInfo;
             if(choosedCorrect){
-                console.log("Choosed Correct");
                 if(piecesToGuess.length<1) {
-                    console.log("WIN");
-                    //win
                     level++;
                     if (currentNumberOfPieces < maxNumberOfPieces) {
                         currentNumberOfPieces++;
@@ -107,16 +97,11 @@ var game = (function () {
                     status = "win";
                 }
             } else {
-                console.log("Choosed Wrong!");
                 if(badShots > currentBadShots) {
-                    //LOST
-                    console.log("END GAME");
                     if(!cheatMode){
                         status = "end"
                     }
                 } else {
-                    //continue game, update shots left and show board
-                    console.log("CONTINUE GAME, SHOW RED BOARD AND THEN SHOW NEW BOARD");
                     shotsLeft = currentBadShots - badShots;
                     shotsAccuracy = (((allShots - badShots)/allShots) * 100).toFixed(2); //in percent
                     status = "continue";
@@ -145,9 +130,6 @@ var game = (function () {
             }else{
                 cheatMode = false;
             }
-
-            console.log("CHEAT MODE: " + checkbox.checked);
-            console.log("CHEAT MODE BOOL: " + cheatMode);
         },
 
         countAmountOfPiecesToGuess = function () {
@@ -178,10 +160,3 @@ function shuffle(a) {
     }
     return a;
 }
-
-/*
-losowanie liczby z zadanego przedzialu
-const min = 1;
-const max = 8;
-const result =  Math.floor(Math.random() * (max-min+1) + min);
- */
