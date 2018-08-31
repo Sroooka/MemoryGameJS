@@ -99,12 +99,37 @@ var controller = function () {
         }
         else
         {
-            var extractedId;
+            var extractedId,
+            gameInfo;
             extractedId = parseInt(id.substring(3));    //remove 'btn' from ID
             console.log("Extracted ID number received: " + extractedId);
-            game.gameButtonClicked(extractedId);
-        }
+            gameInfo = game.gameButtonClicked(extractedId);
+            if(gameInfo.highlight==="red"){
+                console.log("Highlight red piece!");
 
+                highlightRedPiece(extractedId);
+            }
+            if(gameInfo.highlight==="green"){
+                console.log("Highlight green piece!");
+                highlightGreenPiece(extractedId);
+            }
+            if(gameInfo.gameStatus==="win"){
+                console.log("Controller gamestatus win!");
+                gameWonNextLevel(gameInfo.level, gameInfo.shotAccuracy);
+                setAmountToGuess(gameInfo.amountToGuess);
+            } else if(gameInfo.gameStatus==="end"){
+                console.log("Controller gamestatus end!");
+                endGame(gameInfo.level);
+            } else if(gameInfo.gameStatus==="continue"){
+                console.log("Controller gamestatus continue!");
+                continueGame(gameInfo.level, gameInfo.shotsLeft, gameInfo.shotAccuracy);
+            } else{
+                if(gameInfo.amountToGuess){
+                    setAmountToGuess(gameInfo.amountToGuess);
+                }
+
+            }
+        }
     },
 
     showBoard = function () {

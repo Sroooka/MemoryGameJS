@@ -63,42 +63,37 @@ var game = (function () {
                 piecesToGuess.push(piece);
                 console.log(i);
             }
-            //controller.setAmountToGuess(piecesToGuess.length);
             return piecesToGuess;
         },
 
         gameButtonClicked = function (id) {
                 var i,
-                found = false;
+                    found = false,
+                color;
                 allShots++;
                 for(i=0;i<piecesToGuess.length;i++){
                     if(piecesToGuess[i].id == id){
-                        goodChoose(id);
                         found = true;
                         piecesToGuess.splice(i, 1);
-                        controller.setAmountToGuess(piecesToGuess.length);
+                        color="green";
                     }
                 }
                 if(!found) {
-                    badChoose(id);
+                    badShots++;
+                    color="red";
                 }
-                checkGameStatus(found);
+                return checkGameStatus(found, id, color);
             },
 
-        goodChoose = function (id) {
-            console.log("GOOD CHOOSE");
-            controller.highlightGreenPiece(id);
-        },
 
-        badChoose = function (id) {
-            console.log("BAD CHOOSE");
-            badShots++;
-            controller.highlightRedPiece(id);
-        },
 
-        checkGameStatus = function (choosedCorrect) {
-            var shotsLeft,
-            shotsAccuracy;
+
+
+        checkGameStatus = function (choosedCorrect, id, color) {
+            var shotsLeft = 0,
+                status = "nothing",
+            shotsAccuracy = 0,
+            gameInfo;
             if(choosedCorrect){
                 console.log("Choosed Correct");
                 if(piecesToGuess.length<1) {
@@ -109,27 +104,36 @@ var game = (function () {
                         currentNumberOfPieces++;
                     }
                     shotsAccuracy = (((allShots - badShots)/allShots) * 100).toFixed(2);; //in percent
-                    controller.gameWonNextLevel(level, shotsAccuracy);
+                    status = "win";
                 }
             } else {
                 console.log("Choosed Wrong!");
-
-                if(badShots >= currentBadShots) {
+                if(badShots > currentBadShots) {
                     //LOST
                     console.log("END GAME");
                     if(!cheatMode){
-                        controller.endGame(level);
+                        status = "end"
                     }
-
                 } else {
                     //continue game, update shots left and show board
                     console.log("CONTINUE GAME, SHOW RED BOARD AND THEN SHOW NEW BOARD");
                     shotsLeft = currentBadShots - badShots;
-                    shotsAccuracy = (((allShots - badShots)/allShots) * 100).toFixed(2);; //in percent
-                    controller.continueGame(level, shotsLeft, shotsAccuracy);
+                    shotsAccuracy = (((allShots - badShots)/allShots) * 100).toFixed(2); //in percent
+                    status = "continue";
                 }
             }
+            gameInfo = {
+                highlight: color,
+                gameStatus: status, // win, end, continue, nothing
+                level: level,
+                buttonId: id,
+                amountToGuess: piecesToGuess.length,
+                shotAccuracy: shotsAccuracy,
+                shotsLeft: shotsLeft
+            };
+            return gameInfo;
         },
+
         levelUp = function () {
             level++;
             currentNumberOfPieces++;
