@@ -107,10 +107,11 @@ var game = (function () {
                 if (badShots > currentBadShots) {
                     status = (cheatMode) ? "nothing" : "end";
                 } else {
-                    shotsLeft = currentBadShots - badShots;
+
                     status = (cheatMode) ? "nothing" : "continue";
                 }
             }
+            shotsLeft = currentBadShots - badShots;
             shotsAccuracy = (((allShots - badShots) / allShots) * 100).toFixed(2); //in percent
             gameInfo = {
                 highlight: color,
