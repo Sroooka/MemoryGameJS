@@ -98,20 +98,11 @@ var game = (function () {
                 }
             } else {
                 if(badShots > currentBadShots) {
-                    if(cheatMode){
-                        status = "nothing"
-                    } else {
-                        status = "end"
-                    }
+                    status = (cheatMode) ? "nothing" : "end";
                 } else {
                     shotsLeft = currentBadShots - badShots;
                     shotsAccuracy = (((allShots - badShots)/allShots) * 100).toFixed(2); //in percent
-                    //status = "continue";
-                    if(cheatMode){
-                        status = "nothing"
-                    } else {
-                        status = "continue"
-                    }
+                    status = (cheatMode) ? "nothing" : "continue";
                 }
             }
             gameInfo = {
