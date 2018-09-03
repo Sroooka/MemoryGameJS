@@ -47,11 +47,11 @@ var controller = function () {
             }
         },
 
-        setGameStarted = function (value){
+        setGameStarted = function (value) {
             gameStarted = value;
         },
 
-        setCanShotPieces = function (value){
+        setCanShotPieces = function (value) {
             canShotPieces = value;
         },
 
@@ -159,17 +159,21 @@ var controller = function () {
                     highlightGreenPiece(extractedId);
                 }
 
-                if (gameInfo.gameStatus === "win") {
-                    gameWonNextLevel(gameInfo.level);
-                    setAmountToGuess(gameInfo.amountToGuess);
-                } else if (gameInfo.gameStatus === "end") {
-                    endGame(gameInfo.level);
-                } else if (gameInfo.gameStatus === "continue") {
-                    continueGame(gameInfo.level, gameInfo.shotsLeft);
-                } else {
-                    if (gameInfo.amountToGuess) {
+                switch (gameInfo.gameStatus) {
+                    case "win":
+                        gameWonNextLevel(gameInfo.level);
                         setAmountToGuess(gameInfo.amountToGuess);
-                    }
+                        break;
+                    case "end":
+                        endGame(gameInfo.level);
+                        break;
+                    case "continue":
+                        continueGame(gameInfo.level, gameInfo.shotsLeft);
+                        break;
+                    default:
+                        if (gameInfo.amountToGuess) {
+                            setAmountToGuess(gameInfo.amountToGuess);
+                        }
                 }
             }
         },
