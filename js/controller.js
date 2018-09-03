@@ -43,7 +43,16 @@ var controller = function () {
                 alert("Wait until game highlight previous pieces!");
             } else {
                 showBoard();
+
             }
+        },
+
+        setGameStarted = function (value){
+            gameStarted = value;
+        },
+
+        setCanShotPieces = function (value){
+            canShotPieces = value;
         },
 
         highlightGreenPiece = function (id) {
@@ -196,6 +205,8 @@ var controller = function () {
         'startGame': startGame,
         'pieceClicked': pieceClicked,
         'setCheatMode': setCheatMode,
-        'highlightPieces': highlightPieces
+        'highlightPieces': highlightPieces,
+        'setGameStarted': setGameStarted,
+        'setCanShotPieces': setCanShotPieces
     }
 }();

@@ -139,7 +139,6 @@ var
 
             flow = function (message) {
                 document.getElementById("userinfoflow").innerText = message;
-
             };
 
         return {
