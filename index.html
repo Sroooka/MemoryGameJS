@@ -12,32 +12,53 @@
 <div class="row">
     <div class="column" id="leftColumn" style="height: 100vh; ">
         <div style="margin-left: 20px;">
-            <img src="img/game.png" alt="Memory Game"  width="90%" style="margin-top: 15px;">
+            <img src="img/game.png" alt="Memory Game" width="90%" style="margin-top: 15px;">
             <br>
             <h2>Settings:</h2>
-            <p>Number of pieces: <output style="font-size: 20px; padding-left: 10px" id="slidernumberofpiecesoutput">4</output></p>
+            <p>Number of pieces:
+                <output style="font-size: 20px; padding-left: 10px" id="slidernumberofpiecesoutput">4</output>
+            </p>
             <div class="slidercontainer">
-                <input type="range" min="2" max="20" value="4" class="slider" id="slidernumberofpieces" onchange="updateSliderPiece(this.value)">
+                <input type="range" min="2" max="20" value="4" class="slider" id="slidernumberofpieces"
+                       onchange="updateSliderPiece(this.value)">
             </div>
-            <p>Displaying time: <output style="font-size: 20px; padding-left: 10px" id="slidertimeoutput">5</output> [s]</p>
+            <p>Displaying time:
+                <output style="font-size: 20px; padding-left: 10px" id="slidertimeoutput">5</output>
+                [s]
+            </p>
             <div class="slidercontainer">
-                <input type="range" min="1" max="10" value="5" class="slider" id="slidertime" step="0.01" onchange="updateSliderTime(this.value)">
+                <input type="range" min="1" max="10" value="5" class="slider" id="slidertime" step="0.01"
+                       onchange="updateSliderTime(this.value)">
             </div>
-            <p>Bad shots: <output style="font-size: 20px; padding-left: 10px" id="sliderbadshotoutput">0</output></p>
+            <p>Bad shots:
+                <output style="font-size: 20px; padding-left: 10px" id="sliderbadshotoutput">0</output>
+            </p>
             <div class="slidercontainer">
-                <input type="range" min="0" max="10" value="0" class="slider" id="sliderbadshot" step="1" onchange="updateSliderBadShots(this.value)">
+                <input type="range" min="0" max="10" value="0" class="slider" id="sliderbadshot" step="1"
+                       onchange="updateSliderBadShots(this.value)">
             </div>
             <br>
             <h2>Info:</h2>
-            <p>Level: <output id="playerlevel" style="font-size: 40px; padding-left: 10px;" id="playerlevel">1</output></p>
-            <p>Pieces left: <output style="font-size: 20px; padding-left: 10px" id="piecesleft">0</output></p>
-            <p>Shots left: <output style="font-size: 20px; padding-left: 10px" id="shotsleft">0</output></p>
-            <p>Shot accuracy: <output style="font-size: 20px; padding-left: 10px" id="shotaccuracy">100</output>%</p>
+            <p>Level:
+                <output id="playerlevel" style="font-size: 40px; padding-left: 10px;" id="playerlevel">1</output>
+            </p>
+            <p>Pieces left:
+                <output style="font-size: 20px; padding-left: 10px" id="piecesleft">0</output>
+            </p>
+            <p>Shots left:
+                <output style="font-size: 20px; padding-left: 10px" id="shotsleft">0</output>
+            </p>
+            <p>Shot accuracy:
+                <output style="font-size: 20px; padding-left: 10px" id="shotaccuracy">100.00</output>
+                %
+            </p>
 
             <br><br>
-            <p><output id="userinfoflow"></output></p>
+            <p>
+                <output id="userinfoflow"></output>
+            </p>
             <br>
-            <div  style="position:absolute;left:20px;bottom:8vh;width: 22.5%;height: 3vh;">
+            <div style="position:absolute;left:20px;bottom:8vh;width: 22.5%;height: 3vh;">
                 <button class="usage-button" onclick="controller.startGame()">START</button>
                 <button class="usage-button" onclick="controller.highlightPieces()">Highlight</button>
             </div>
@@ -53,11 +74,10 @@
 <div style="position:absolute;right:10px;bottom:10px;">
     <h6 style="color: #ffffff">CheatMode</h6>
     <div class="onoffswitch">
-        <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" onchange="controller.setCheatMode(this)">
+        <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch"
+               onchange="controller.setCheatMode(this)">
         <label class="onoffswitch-label" for="myonoffswitch"></label>
     </div>
 </div>
-
-
 </body>
 </html>

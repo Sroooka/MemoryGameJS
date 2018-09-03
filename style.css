@@ -9,36 +9,33 @@
 }
 
 .slider {
-    -webkit-appearance: none;  /* Override default CSS styles */
+    -webkit-appearance: none;
     appearance: none;
-    width: 90%; /* Full-width */
-    height: 1vh; /* Specified height */
-    background: #d3d3d3; /* Grey background */
-    outline: none; /* Remove outline */
-    opacity: 1; /* Set transparency (for mouse-over effects on hover) */
-    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+    width: 90%;
+    height: 1vh;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 1;
+    -webkit-transition: .2s;
     transition: opacity .2s;
     margin-top: 5px;
 }
 
 .slider:hover {
-    opacity: 0.7; /* Fully shown on mouse-over */
+    opacity: 0.7;
 }
 
 .slider::-webkit-slider-thumb {
-    -webkit-appearance: none; /* Override default look */
+    -webkit-appearance: none;
     appearance: none;
-    width: 2vh; /* Set a specific slider handle width */
-    height: 2vh; /* Slider handle height */
+    width: 2vh;
+    height: 2vh;
     background: #f200e3;
-    cursor: pointer; /* Cursor on hover */
+    cursor: pointer;
 }
 
 h1 {
-    /*font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;*/
     font-size: 30px;
-    letter-spacing: 0.4px;
-    word-spacing: 0.8px;
     color: #efefef;
     font-weight: 900;
     text-decoration: none;
@@ -48,10 +45,7 @@ h1 {
 }
 
 h2 {
-    /*font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;*/
     font-size: 30px;
-    letter-spacing: 0.4px;
-    word-spacing: 0.8px;
     color: #ffffff;
     font-weight: 900;
     text-decoration: none;
@@ -60,12 +54,8 @@ h2 {
     margin-top: 15px;
 }
 
-
 p {
-    /*font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;*/
     font-size: 20px;
-    letter-spacing: 0.4px;
-    word-spacing: 0.8px;
     color: #dedede;
     font-weight: 700;
     text-decoration: none;
@@ -156,34 +146,53 @@ p {
 }
 
 .onoffswitch {
-    position: relative; width: 50px;
-    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+    position: relative;
+    width: 50px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 }
+
 .onoffswitch-checkbox {
     display: none;
 }
+
 .onoffswitch-label {
-    display: block; overflow: hidden; cursor: pointer;
-    height: 17px; padding: 0; line-height: 17px;
-    border: 2px solid #E3E3E3; border-radius: 17px;
+    display: block;
+    overflow: hidden;
+    cursor: pointer;
+    height: 17px;
+    padding: 0;
+    line-height: 17px;
+    border: 2px solid #E3E3E3;
+    border-radius: 17px;
     background-color: #FFFFFF;
     transition: background-color 0.3s ease-in;
 }
+
 .onoffswitch-label:before {
     content: "";
-    display: block; width: 17px; margin: 0px;
+    display: block;
+    width: 17px;
+    margin: 0px;
     background: #FFFFFF;
-    position: absolute; top: 0; bottom: 0;
+    position: absolute;
+    top: 0;
+    bottom: 0;
     right: 21px;
-    border: 2px solid #E3E3E3; border-radius: 17px;
+    border: 2px solid #E3E3E3;
+    border-radius: 17px;
     transition: all 0.3s ease-in 0s;
 }
+
 .onoffswitch-checkbox:checked + .onoffswitch-label {
     background-color: #49E845;
 }
+
 .onoffswitch-checkbox:checked + .onoffswitch-label, .onoffswitch-checkbox:checked + .onoffswitch-label:before {
     border-color: #49E845;
 }
+
 .onoffswitch-checkbox:checked + .onoffswitch-label:before {
     right: 0px;
 }
