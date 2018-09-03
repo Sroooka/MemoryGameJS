@@ -2,6 +2,7 @@ describe('Game', function () {
 
     it('ad1: should return 4 pieces after game start', function () {
         var pieces;
+
         game.startGame();
         pieces = game.getPieces();
         expect(pieces.length).toBe(4);
@@ -228,7 +229,6 @@ describe('Game', function () {
 
     it('ad12: number of pieces left to guess', function () {
         var piecesToGuess,
-            iterationPieces,
             gameInfo,
             idOfPieceToShot,
             piece,
@@ -239,8 +239,7 @@ describe('Game', function () {
         //go to level 2
         game.getPieces();
         piecesToGuess = game.getPiecesToGuess();
-        iterationPieces = piecesToGuess.slice();
-        piece = iterationPieces[0];
+        piece = piecesToGuess[0];
         game.gameButtonClicked(piece.id);
 
         //shot 2 times the same tile
@@ -254,14 +253,12 @@ describe('Game', function () {
 
     it('ad14a: should show accuracy after good and bad shot', function () {
         var piecesToGuess,
-            iterationPieces,
             gameInfo,
             idOfPieceToShot,
             piece,
             firstShotAccuracy,
             secondShotAccuracy,
-            thirdShotAccuracy,
-            i;
+            thirdShotAccuracy;
 
         game.startGame();
 
@@ -292,6 +289,8 @@ describe('Game', function () {
 
     it('ad14b: should start game with configured number of bad shots', function () {
         var piecesToGuess,
+            piece,
+            gameInfo,
             config = {
                 numberOfPieces: 20,
                 badShots: 10
@@ -305,7 +304,6 @@ describe('Game', function () {
         piece = piecesToGuess[0];
         gameInfo = game.gameButtonClicked(piece.id);
 
-
         expect(gameInfo.shotsLeft).toBe(10);
     });
 
@@ -314,6 +312,7 @@ describe('Game', function () {
             allPieces,
             goodPiece,
             badPiece,
+            gameInfo,
             checkbox = {
                 checked: true
             };
